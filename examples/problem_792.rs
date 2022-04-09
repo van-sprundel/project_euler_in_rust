@@ -4,15 +4,19 @@ use std::ops::{Add, Div, Mul, Sub};
 use std::sync::mpsc;
 use std::thread;
 use std::time::Duration;
-use num_bigint::{BigInt, ToBigInt};
-use num_traits::{One, pow, Pow, ToPrimitive, Zero};
+
+use num::{BigInt, ToBigInt};
+use num::{Inv, One, pow, Pow, ToPrimitive, Zero};
+use num::bigint::ToBigInt;
+use num::real::Real;
+use crate::pow::Pow;
 
 fn main() {
-    // println!("{}", v2(BigInt::from(24))); // 3
-    // println!("{}", s(4)); // 980
-    // println!("{}", u(4)); // 7
-    // println!("{}", u(20)); // 24
-    // println!("answer: {}", u2(5)); // 241
+    println!("{}", v2(BigInt::from(24))); // 3
+    println!("{}", s(4)); // 980
+    println!("{}", u(4)); // 7
+    println!("{}", u(20)); // 24
+    println!("answer: {}", u2(5)); // 241
 
 
     // println!("{}", u2(10_000)); // ?
@@ -26,12 +30,25 @@ fn v2(n: BigInt) -> isize {
 
     let mut res = 1;
     // y = 2^x
-    // x = ln(y)*ln(2)
+    // x = ln(y)/ln(2)
     // so max is only 0..x, diving bigger than n won't work
     let max = (((n.to_f32().unwrap()).ln() / 2_f32.ln()) as isize);
     // println!("max of {:02} is {:02}",n,max);
 
-    for i in 1..(max / TWO) {
+    // println!("num {}", &n);
+    for i in 2..=max {
+        // let div = &n.to_f64().unwrap().mul((i as f64).recip());
+        // if div.fract() == 0.0 {
+        //     let x = div.ln() / 2_f64.ln();
+        //     if x as isize > max { continue; }
+        //     // println!("round number {} {}", div, x);
+        //     if x.fract() == 0.0 {
+        //         println!("Found em!");
+        //         return x as isize;
+        //     }
+        // }
+
+
         let i_end = max.sub(i);
         // println!("{:02} and {:02} out of {}", i_start, i_end, max);
         let div_start = BigInt::from(TWO.to_f32().unwrap().pow(i as f32) as isize);

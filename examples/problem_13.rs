@@ -1,5 +1,5 @@
-use num_bigint::{BigInt, Sign};
-use num_traits::identities::Zero;
+use num::{BigInt, Zero};
+
 fn main() {
     let input = "37107287533902102798797998220837590246510135740250
 46376937677490009712648124896970078050417018260538
@@ -103,7 +103,7 @@ fn main() {
 53503534226472524250874054075591789781264330331690";
 
     let input = input.split('\n').collect::<Vec<_>>();
-    let mut sum:BigInt = BigInt::zero();
+    let mut sum = BigInt::zero();
     for num in input {
         sum += num.parse::<BigInt>().unwrap();
     }
