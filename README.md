@@ -11,8 +11,8 @@ Colons can be used to align columns.
 
 |Problem|Status|Optimized
 |---|---|---
-|Problem 1. |✓| ✓
-|Problem 2. |✓|x
+|Problem 1 |✓| ✓
+|Problem 2 |✓|x
 |Problem 3|✓|x
 |Problem 4|✓|x
 |Problem 5|✓|x
@@ -26,10 +26,10 @@ Colons can be used to align columns.
 |Problem 13|✓|x
 |Problem 14|✓|x
 |Problem 15|✓|x
-|Problem 16|x|x
-|Problem 17|x|x
-|Problem 18|x|x
-|Problem 19|x|x
+|Problem 16|✓|✓
+|Problem 17|✓|✓
+|Problem 18|✓|✓
+|Problem 19|✓|✓
 |Problem 20|x|x
 |Problem 21|x|x
 |Problem 22|x|x

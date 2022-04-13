@@ -7,6 +7,8 @@ edition = "2021"
 
 [dependencies]
 num = "0.4.0"
+chrono = "0.4.19"
+
 [profile.release]
 opt-level = 3
 overflow-checks = true
