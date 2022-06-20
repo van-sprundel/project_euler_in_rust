@@ -5,7 +5,10 @@ fn main() {
     let size = 13; // was 4
     for x in 0..(input.len() - size) {
         let chars = &input[x..x + size];
-        let num:u64 = chars.chars().map(|c| c.to_digit(10).unwrap() as u64).product();
+        let num: u64 = chars
+            .chars()
+            .map(|c| c.to_digit(10).unwrap() as u64)
+            .product();
 
         if num > res {
             res = num;
@@ -13,5 +16,5 @@ fn main() {
         }
     }
 
-    println!("{} with nums {:?}",res,res_nums.chars());
+    println!("{} with nums {:?}", res, res_nums.chars());
 }

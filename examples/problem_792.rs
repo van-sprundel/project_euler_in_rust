@@ -5,11 +5,11 @@ use std::sync::mpsc;
 use std::thread;
 use std::time::Duration;
 
-use num::{BigInt, ToBigInt};
-use num::{Inv, One, pow, Pow, ToPrimitive, Zero};
+use crate::pow::Pow;
 use num::bigint::ToBigInt;
 use num::real::Real;
-use crate::pow::Pow;
+use num::{pow, Inv, One, Pow, ToPrimitive, Zero};
+use num::{BigInt, ToBigInt};
 
 fn main() {
     println!("{}", v2(BigInt::from(24))); // 3
@@ -18,7 +18,6 @@ fn main() {
     println!("{}", u(20)); // 24
     println!("answer: {}", u2(5)); // 241
 
-
     // println!("{}", u2(10_000)); // ?
 }
 
@@ -26,7 +25,9 @@ pub const TWO: isize = 2;
 
 fn v2(n: BigInt) -> isize {
     // O(1) for anything that wouldn't return anything other than 1 or the sqrt of itself;
-    if &n % 2.to_bigint().unwrap() != 0.to_bigint().unwrap() || n < BigInt::zero() { return 1; }
+    if &n % 2.to_bigint().unwrap() != 0.to_bigint().unwrap() || n < BigInt::zero() {
+        return 1;
+    }
 
     let mut res = 1;
     // y = 2^x
@@ -47,7 +48,6 @@ fn v2(n: BigInt) -> isize {
         //         return x as isize;
         //     }
         // }
-
 
         let i_end = max.sub(i);
         // println!("{:02} and {:02} out of {}", i_start, i_end, max);
@@ -77,12 +77,10 @@ fn s(n: isize) -> BigInt {
 fn binom(n: isize, k: isize) -> BigInt {
     let mut res = BigInt::one();
     for i in 0..k {
-        res = (res * (n - i)) /
-            (i + 1);
+        res = (res * (n - i)) / (i + 1);
     }
     res
 }
-
 
 fn u(n: isize) -> isize {
     v2(3.to_bigint().unwrap() * s(n) + 4.to_bigint().unwrap())
@@ -94,7 +92,6 @@ fn u2(n: isize) -> isize {
         res
     })
 }
-
 
 fn find_v2(n: isize) -> isize {
     // 2^n..

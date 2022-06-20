@@ -30,7 +30,7 @@ Colons can be used to align columns.
 |Problem 17|✓|✓
 |Problem 18|✓|✓
 |Problem 19|✓|✓
-|Problem 20|x|x
+|Problem 20|✓|✓
 |Problem 21|x|x
 |Problem 22|x|x
 |Problem 23|x|x

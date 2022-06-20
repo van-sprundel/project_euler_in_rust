@@ -1,9 +1,14 @@
 fn main() {
-    println!("{}", (1..=1000).fold(0, |res, i| { res + num_to_word(i).len() }));
+    println!(
+        "{}",
+        (1..=1000).fold(0, |res, i| { res + num_to_word(i).len() })
+    );
 }
 
 fn num_to_word(n: usize) -> String {
-    if n == 0 { return "zero".to_string(); }
+    if n == 0 {
+        return "zero".to_string();
+    }
     let mut under_10 = match n % 10 {
         1 => "one",
         2 => "two",
@@ -14,9 +19,12 @@ fn num_to_word(n: usize) -> String {
         7 => "seven",
         8 => "eight",
         9 => "nine",
-        _ => ""
-    }.to_owned();
-    if n < 10 { return under_10; }
+        _ => "",
+    }
+    .to_owned();
+    if n < 10 {
+        return under_10;
+    }
 
     let mut under_100 = match (n % 100) / 10 {
         1 => match n % 10 {
@@ -39,8 +47,9 @@ fn num_to_word(n: usize) -> String {
         7 => "seventy",
         8 => "eighty",
         9 => "ninety",
-        _ => ""
-    }.to_owned();
+        _ => "",
+    }
+    .to_owned();
     if !(11..20).contains(&(n % 100)) {
         under_100.push_str(&*under_10);
     }
@@ -58,12 +67,16 @@ fn num_to_word(n: usize) -> String {
         7 => "seven",
         8 => "eight",
         9 => "nine",
-        _ => ""
-    }).to_owned() + "hundred";
+        _ => "",
+    })
+    .to_owned()
+        + "hundred";
 
     if n < 1000 {
         let mut temp = under_1000;
-        if n % 100 != 0 { temp += "and" }
+        if n % 100 != 0 {
+            temp += "and"
+        }
         temp.push_str(&*under_100);
         return temp;
     }

@@ -7,7 +7,9 @@ fn main() {
         // you can check the square root of a number to get half of the factors
         // we only need the length of the factors, so we double the value
         // let divisibles = (1..=((num as f32).sqrt() as u64)).filter(|x| num % x == 0).count()*2;
-        let divisibles =(1..=((num as f32).sqrt() as u64)).fold(0, |acc, x| if num%x==0 {acc+2} else {acc});
+        let divisibles =
+            (1..=((num as f32).sqrt() as u64))
+                .fold(0, |acc, x| if num % x == 0 { acc + 2 } else { acc });
         // println!("num: {} divisibles: {}", num, divisibles);
         if divisibles >= 500 {
             println!("{}", num);

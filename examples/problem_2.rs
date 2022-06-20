@@ -5,7 +5,9 @@ fn main() {
     let mut even_sum = 0;
 
     for i in 0..1_000_000 {
-        if res > 4_000_000 { break; }
+        if res > 4_000_000 {
+            break;
+        }
         res = first + second;
         first = second;
         second = res;

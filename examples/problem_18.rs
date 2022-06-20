@@ -1,7 +1,6 @@
 fn main() {
-    println!("{}",compute(&parse(TRIANGLE)).to_string());
+    println!("{}", compute(&parse(TRIANGLE)).to_string());
 }
-
 
 const TRIANGLE: &str = "
 75
@@ -22,19 +21,26 @@ const TRIANGLE: &str = "
 ";
 
 fn parse(s: &str) -> Vec<Vec<u32>> {
-  s.lines()
+    s.lines()
         .filter(|l| !l.is_empty())
-        .map(|line| line.split_ascii_whitespace().map(|s| s.parse().unwrap()).collect())
+        .map(|line| {
+            line.split_ascii_whitespace()
+                .map(|s| s.parse().unwrap())
+                .collect()
+        })
         .collect::<Vec<Vec<_>>>()
 }
 
 fn compute(input: &[Vec<u32>]) -> u32 {
-    let init = &input[0..input.len()-1];
-    let res= init.iter().rev().fold(input.last().unwrap().to_vec(), |mut total, elm| {
-        for (i, &e) in elm.iter().enumerate() {
-            total[i] = e + std::cmp::max(total[i], total[i+1 ]);
-        }
-        total
-    });
+    let init = &input[0..input.len() - 1];
+    let res = init
+        .iter()
+        .rev()
+        .fold(input.last().unwrap().to_vec(), |mut total, elm| {
+            for (i, &e) in elm.iter().enumerate() {
+                total[i] = e + std::cmp::max(total[i], total[i + 1]);
+            }
+            total
+        });
     res[0]
 }
